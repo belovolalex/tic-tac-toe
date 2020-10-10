@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+}
+#app {
+  font-family: sans-serif;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .1s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}

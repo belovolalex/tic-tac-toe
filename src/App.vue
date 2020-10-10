@@ -1,28 +1,38 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <transition name="fade" mode="out-in">
+      <Start
+        v-if="!start"
+        @onStart="start = true"
+      />
+      <div v-else class="wrapper-cells">
+        <Cells />
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Cells from './components/Cells'
+import Start from './components/Start'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Start,
+    Cells
+  },
+  data() {
+    return {
+      start: false
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+  .wrapper-cells {
+    height: 100vh;
+    display: flex;
+  }
 </style>
